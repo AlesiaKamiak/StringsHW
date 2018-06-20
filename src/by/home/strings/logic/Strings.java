@@ -22,4 +22,54 @@ public class Strings {
 		return text;
 	}
 
+	/*
+	 * В тексте после каждого k-го символа вставить заданную подстроку.
+	 * StringBuilder
+	 */
+
+	public StringBuilder insertSubstringIntoStringStringBuilder(StringBuilder text, String subString, int k) {
+		StringBuilder newText = null;
+		int j = k;
+		while (j <= text.length()) {
+			StringBuilder str3 = text.insert(j, subString);
+			newText = str3;
+			j = j + k + subString.length();
+		}
+		System.out.println(newText);
+
+		return text;
+
+	}
+
+	/*
+	 * Из текста удалить все символы, кроме пробелов, не являющиеся буквами. Между
+	 * последовательностями подряд идущих букв оставить хотя бы один пробел
+	 */
+
+	public String DeleteSymbolsFromText(String text) {
+
+		String[] a = text.split("[^a-zA-Z]+");
+		String str = "";
+		for (int i = 0; i < a.length; i++) {
+			str = str + a[i] + " ";
+		}
+		return str;
+	}
+
+	/*
+	 * После каждого слова текста, заканчивающегося заданной подстрокой, вставить
+	 * указанное слово.
+	 */
+	public StringBuilder InsertWordAfterSubString(StringBuilder text, String substring, String word) {
+		
+		for (int i = 0; i <= text.length() - substring.length(); i++) {
+			if (text.substring(i, i + substring.length()).equals(substring)) {
+				if (i + substring.length() == text.length() || text.charAt(i + substring.length()) == ' ') {
+					text = text.insert(i + substring.length()," "+ word);
+				}
+			}
+		}
+		return text;
+		
+	}
 }
